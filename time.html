@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="icon" href="/static/images/favicon.png">
+    </head>
+<title>House Price Prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="static/images/favicon.ico">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+.mySlides {display: none}
+</style>
+<body class="w3-content w3-border-left w3-border-right">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+
+    <h3>Enter your details:</h3>
+
+
+<form method="POST" action="{{ url_for('interact_life_expectancy', _anchor='Report') }}">
+
+
+      <p><label>Square Foot Area</label><BR>
+            <SELECT class="selectpicker" name="age" required style="width:180px;">
+              <option value="{{default_age}}" selected>{{default_age}}</option>
+             {% for age in range(0,15001,200) %}
+                 <option value="{{age}}">{{age}}</option>
+             {% endfor %}
+            </SELECT>
+       </p>
+
+
+
+
+     <BR> <p><button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-clock-o  w3-margin-right"></i>Predict Price</button></p>
+    </form>
+    </div>
+    <div class="w3-bar-block">
+    <a href="pre_processing_G26" class="w3-bar-item w3-button w3-padding-16" target="_blank"  ><i class="fa fa-rss"></i> Pre-Processing</a>
+    
+    <a href="https://drive.google.com/open?id=19NDv_0bVEZNF_0jkPZOm5EH_GoXwxsxB&usp=sharing" class="w3-bar-item w3-button w3-padding-16" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i>View on Map</a>   
+        
+    <a href="latex_report_G26" class="w3-bar-item w3-button w3-padding-16" target="_blank"><i class="fa fa-book"></i> Report</a>
+        
+    <a href="published_work_G26" class="w3-bar-item w3-button w3-padding-16" target="_blank"><i class="fa fa-envelope"></i> Published Work</a>
+        
+    <a href="add_data" class="w3-bar-item w3-button w3-padding-16" target="_blank"><i class="fa fa-circle"></i> Add Sale Entry</a>
+        
+    </div>
+  BE Group-26<br>
+  Comp, RMDSSOE<br>
+</nav>
+
+
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <span class="w3-bar-item">House Price Prediction</span>
+  <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-white" style="margin-left:260px">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:80px"></div>
+
+  <!-- Slideshow Header -->
+  <div class="w3-container" id="apartment">
+    <h2 class="w3-text-darkblue">House Price Prediction System</h2>
+        <div class="w3-display-container mySlides">
+
+        <img src="/static/images/time.jpg" style="width:100%;margin-bottom:-6px">
+       
+
+
+
+     <div id="Report" class="w3-container w3-margin-top" id="Report">
+
+    <h4><strong>Results</strong></h4>
+        <div class="w3-row w3-large">
+
+
+               <div id="Report" class="w3-container w3-margin-top" id="Report">
+
+                    <p>
+
+                            {{string_to_print}}
+
+
+                    </p>
+                </div>
+
+
+        </div>
+
+      </div>
+
+      <hr>
+
+       <div class="w3-container" id="apartment">
+
+        <!--here was all static data-->
+
+      </div>
+    
+    <!-- p>   <iframe target="_blank" src="https://www.google.com/maps/d/u/0/embed?mid=19NDv_0bVEZNF_0jkPZOm5EH_GoXwxsxB" width="685" height="480"></iframe> </p -->  
+    
+    
+        <iframe target="_blank" src="https://www.google.com/maps/d/u/0/embed?mid=19NDv_0bVEZNF_0jkPZOm5EH_GoXwxsxB" width=100% height="480" margin-bottom:-6px></iframe>      
+       </div>
+
+  </div> 
+   
+  <footer class="w3-container w3-padding-16" style="margin-top:32px">
+  Abhishek Thombare-
+  Sumit Chavan-
+  Gautam Mudaliar-
+  Nimish Vaidya
+
+
+</footer>
+
+<!-- End page content -->
+</div>
+
+
+
+<script>
+// Script to open and close sidebar when on tablets and phones
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Slideshow Apartment Images
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+
+</body>
+</html>
